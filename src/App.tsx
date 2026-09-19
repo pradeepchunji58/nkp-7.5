@@ -43,6 +43,8 @@ import { BlurLockContainer } from './components/BlurLockContainer';
 import { adminTabStore } from './utils/adminTabStore';
 import { QuestionDirectoryLookup } from './components/QuestionDirectoryLookup';
 import { MobileQuestionQuickDrawer } from './components/MobileQuestionQuickDrawer';
+import { ImageModal } from './components/ImageModal';
+import { QuestionImageAttachment } from './types';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('prerequisites');
@@ -50,6 +52,7 @@ export default function App() {
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [adminSelectedQuestionId, setAdminSelectedQuestionId] = useState<string | undefined>(undefined);
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+  const [modalImage, setModalImage] = useState<QuestionImageAttachment | null>(null);
   const [userAnswers, setUserAnswers] = useState<Record<string, { selected: OptionKey | null; isSubmitted: boolean }>>({
     'nkp-q1': { selected: null, isSubmitted: false },
   });
@@ -90,6 +93,20 @@ export default function App() {
       setAllQuestions(questions);
     });
     return unsub;
+  }, []);
+
+  // Listen for global image modal open events from question cards
+  useEffect(() => {
+    const handleOpenModal = (e: Event) => {
+      const customEvent = e as CustomEvent<QuestionImageAttachment>;
+      if (customEvent.detail) {
+        setModalImage(customEvent.detail);
+      }
+    };
+    window.addEventListener('open-nkp-image-modal', handleOpenModal);
+    return () => {
+      window.removeEventListener('open-nkp-image-modal', handleOpenModal);
+    };
   }, []);
 
   // Subscribe to admin auth / permissions updates
@@ -630,6 +647,22 @@ export default function App() {
 
       {/* Floating / Sticky TTS Player Bar */}
       <AudioPlayerBar />
+
+      {/* Global Image Lightbox Modal */}
+      <ImageModal
+        image={modalImage}
+        onClose={() => setModalImage(null)}
+      />
     </div>
   );
+}
+
+// Attach global opener for QuestionCard images
+if (typeof window !== 'undefined') {
+  (window as any).__openImageModal = (img: QuestionImageAttachment) => {
+    // We can dispatch a custom event or store update if needed, but since App renders ImageModal, 
+    // let's hook it up cleanly via window event or direct state setter
+    const event = new CustomEvent('open-nkp-image-modal', { detail: img });
+    window.dispatchEvent(event);
+  };
 }

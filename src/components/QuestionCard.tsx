@@ -347,13 +347,26 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   className="bg-slate-950 rounded-xl border border-slate-800 overflow-hidden flex flex-col"
                 >
                   {/* Fit to show: image is displayed directly with clean padding and natural containment */}
-                  <div className="w-full bg-slate-950 flex items-center justify-center p-2 sm:p-4">
+                  <div 
+                    className="w-full bg-slate-950 flex items-center justify-center p-2 sm:p-4 cursor-pointer group relative"
+                    onClick={() => {
+                      // Trigger modal view if available, or open in new tab
+                      const modalEl = document.getElementById('global-image-modal-trigger');
+                      if ((window as any).__openImageModal) {
+                        (window as any).__openImageModal(img);
+                      }
+                    }}
+                    title="Click to view full-size image"
+                  >
                     <img
                       src={img.imageUrl}
                       alt={img.caption || img.fileName}
-                      className="w-auto max-w-full h-auto max-h-[500px] object-contain rounded-lg border border-slate-800 shadow-md"
+                      className="w-auto max-w-full h-auto max-h-[500px] object-contain rounded-lg border border-slate-800 shadow-md transition-transform group-hover:scale-[1.01]"
                       loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg pointer-events-none">
+                      <span className="px-3 py-1 bg-slate-900/90 text-white text-xs font-medium rounded-full shadow border border-slate-700">Click to expand</span>
+                    </div>
                   </div>
 
                   {img.caption && (
