@@ -1,0 +1,107 @@
+{
+  "version": "1.0.0",
+  "appName": "Nutanix Kubernetes Platform (NKP) NCP-CN 7.5 Exam Pro & Master Trainer",
+  "lastUpdated": "2026-09-19T06:40:00.000Z",
+  "description": "Master manifest of all application questions, custom question overrides, deleted question state, and reference screenshot attachments for production deployment verification.",
+  "questionImages": [
+    {
+      "id": "img-q2-sync",
+      "questionId": "q2",
+      "imageUrl": "/uploads/q_q2_1789792359540_NCP-CN_7_5_V092026-2-op_png.png",
+      "caption": "Exhibit 2: Bastion & Cluster Deployment Architecture",
+      "fileName": "q_q2_1789792359540_NCP-CN_7_5_V092026-2-op_png.png",
+      "fileSize": 142850,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q46-sync",
+      "questionId": "q46",
+      "imageUrl": "/uploads/q_q46_1789792441427_NCP-CN_7_5_V092026-2-op_-_6_pn.png",
+      "caption": "Exhibit 46: Cluster API & Control Plane Provisioning",
+      "fileName": "q_q46_1789792441427_NCP-CN_7_5_V092026-2-op_-_6_pn.png",
+      "fileSize": 156200,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q53-sync",
+      "questionId": "q53",
+      "imageUrl": "/uploads/q_q53_1789792496546_NCP-CN_7_5_V092026-2-op_-_53_p.png",
+      "caption": "Exhibit 53: StorageClass & CSI Provisioning Topology",
+      "fileName": "q_q53_1789792496546_NCP-CN_7_5_V092026-2-op_-_53_p.png",
+      "fileSize": 134100,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q60-sync",
+      "questionId": "q60",
+      "imageUrl": "/uploads/q_q60_1789792544116_NCP-CN_7_5_V092026-2-op_-_60_p.png",
+      "caption": "Exhibit 60: Kommander Fleet Management Dashboard",
+      "fileName": "q_q60_1789792544116_NCP-CN_7_5_V092026-2-op_-_60_p.png",
+      "fileSize": 148900,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q65-sync",
+      "questionId": "q65",
+      "imageUrl": "/uploads/q_q65_1789796775867_NCP-CN_7_5_V092026-2-op_-_65_p.png",
+      "caption": "Exhibit 65: MetalLB BGP & IP Pool Routing",
+      "fileName": "q_q65_1789796775867_NCP-CN_7_5_V092026-2-op_-_65_p.png",
+      "fileSize": 129400,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q92-sync",
+      "questionId": "q92",
+      "imageUrl": "/uploads/q_q92_1789796844895_NCP-CN_7_5_V092026-2-op_-_92_p.png",
+      "caption": "Exhibit 92: Air-Gapped Registry Mirror Configuration",
+      "fileName": "q_q92_1789796844895_NCP-CN_7_5_V092026-2-op_-_92_p.png",
+      "fileSize": 152100,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q94-sync",
+      "questionId": "q94",
+      "imageUrl": "/uploads/q_q94_1789796891023_NCP-CN_7_5_V092026-2-op_-_94_p.png",
+      "caption": "Exhibit 94: Velero Backup Target & Object Storage Setup",
+      "fileName": "q_q94_1789796891023_NCP-CN_7_5_V092026-2-op_-_94_p.png",
+      "fileSize": 138500,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q97-sync",
+      "questionId": "q97",
+      "imageUrl": "/uploads/q_q97_1789798710142_NCP-CN_7_5_V092026-2-op_-_97_p.png",
+      "caption": "Exhibit 97: Prometheus & Thanos Alertmanager Rules",
+      "fileName": "q_q97_1789798710142_NCP-CN_7_5_V092026-2-op_-_97_p.png",
+      "fileSize": 145200,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q102-sync",
+      "questionId": "q102",
+      "imageUrl": "/uploads/q_q102_1789798754079_NCP-CN_7_5_V092026-2-op_-_A102.png",
+      "caption": "Exhibit 102: GitOps Flux Pipeline & Synchronization Status",
+      "fileName": "q_q102_1789798754079_NCP-CN_7_5_V092026-2-op_-_A102.png",
+      "fileSize": 159300,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q104-sync-a",
+      "questionId": "q104",
+      "imageUrl": "/uploads/q_q104_1789798817893_NCP-CN_7_5_V092026-2-op_-_A104.png",
+      "caption": "Exhibit 104A: LimitRange Pod Admission Constraints",
+      "fileName": "q_q104_1789798817893_NCP-CN_7_5_V092026-2-op_-_A104.png",
+      "fileSize": 131200,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    },
+    {
+      "id": "img-q104-sync-b",
+      "questionId": "q104",
+      "imageUrl": "/uploads/q_q104_1789798818633_NCP-CN_7_5_V092026-2-op_-_B104.png",
+      "caption": "Exhibit 104B: Namespace Resource Quota & Limit Enforcement",
+      "fileName": "q_q104_1789798818633_NCP-CN_7_5_V092026-2-op_-_B104.png",
+      "fileSize": 136400,
+      "uploadedAt": "2026-09-18T12:00:00.000Z"
+    }
+  ]
+}

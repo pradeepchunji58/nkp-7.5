@@ -1,0 +1,6 @@
+{
+  "name": "NKP Bastion Host Exam Guide & Audio Suite",
+  "description": "Interactive Nutanix Kubernetes Platform (NKP) NCP-CN 7.5 exam preparation, pre-examination simulation mode, and bastion hosting examination achievement guidance with Gemini 3.1 Flash Text-to-Speech.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
