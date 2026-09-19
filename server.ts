@@ -4,6 +4,7 @@ import fs from "fs";
 import dotenv from "dotenv";
 import { GoogleGenAI, Modality } from "@google/genai";
 import { createServer as createViteServer } from "vite";
+import { put } from "@vercel/blob";
 
 dotenv.config();
 
@@ -203,7 +204,7 @@ app.get("/api/question-images", (req, res) => {
 });
 
 // POST upload new screenshot/image attachment
-app.post("/api/question-images", (req, res) => {
+app.post("/api/question-images", async (req, res) => {
   try {
     const { questionId, caption, fileName, dataUrl } = req.body;
 
@@ -233,14 +234,33 @@ app.post("/api/question-images", (req, res) => {
 
     const cleanSafeName = (fileName || "screenshot").replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 30);
     const uniqueFileName = `q_${questionId}_${Date.now()}_${cleanSafeName}.${ext}`;
-    const destinationPath = path.join(UPLOAD_DIR, uniqueFileName);
 
-    fs.writeFileSync(destinationPath, buffer);
+    let imageUrl = "";
+
+    // If Vercel Blob token is configured, use Vercel Blob cloud storage (Scenario B)
+    if (process.env.BLOB_READ_WRITE_TOKEN) {
+      try {
+        const blobResult = await put(uniqueFileName, buffer, {
+          access: "public",
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+        });
+        imageUrl = blobResult.url;
+      } catch (blobErr: any) {
+        console.warn("Vercel Blob upload failed, falling back to local storage:", blobErr);
+      }
+    }
+
+    // Fallback to local storage if Vercel Blob wasn't used or failed
+    if (!imageUrl) {
+      const destinationPath = path.join(UPLOAD_DIR, uniqueFileName);
+      fs.writeFileSync(destinationPath, buffer);
+      imageUrl = `/uploads/${uniqueFileName}`;
+    }
 
     const newAttachment = {
       id: `img-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`,
       questionId,
-      imageUrl: `/uploads/${uniqueFileName}`,
+      imageUrl,
       caption: caption || "",
       fileName: fileName || uniqueFileName,
       fileSize: buffer.length,
